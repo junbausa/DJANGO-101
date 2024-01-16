@@ -3,6 +3,15 @@
 {% block title %}Homepage{% endblock title%}
 
 {% block body %}
-    <h1>{{ my_thing }}</h1>
+    {% comment %} <h1>{{ posts }}</h1> {% endcomment %}
+    {% comment %} We can create for loop to handle posts {% endcomment %}
+    {% for post in posts  %}
+        
+        {{ post.text }}
+
+        <hr>
+
+    {% endfor %}
+
 {% endblock body %}
     

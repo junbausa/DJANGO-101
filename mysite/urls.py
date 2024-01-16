@@ -19,9 +19,9 @@ from django.urls import path
 
 # This is added for the feed page
 from django.conf.urls import include
-from feed import urls as feed_urls
+from feed import urls as feeds_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(feed_urls, namespace = 'feed'))
+    path('', include(feeds_urls, namespace = 'feed'))
 ]
