@@ -8,30 +8,39 @@
 
 {% block body %}
 
-    <a href="{% url "feed:post" %}" style="display: inline-block">Add a new Post</a>
-    <hr>
+        <div class="row py-5">
 
-    {% comment %} <h1>{{ posts }}</h1> {% endcomment %}
-    {% comment %} We can create for loop to handle posts {% endcomment %}
-    {% for post in posts  %}
-        
-    {% comment %} Bad Example of adding links {% endcomment %}
-    {% comment %} <a href="/detail/{{ post.id }}">Link to detail</a> {% endcomment %}
-    
-    {% comment %} Good Example of adding links using namespace {% endcomment %}
-    {% comment %} namespace:nameoftheview {% endcomment %}
-    <a href="{% url "feed:detail" post.id %}" style="display: inline-block">
-        {{ post.text }}
-        <br>
-        {% comment %} Adding thumbnails via sorl-thumbnail {% endcomment %}
-            {% thumbnail post.image "100x100" crop="center" as im %}
-                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-            {% endthumbnail %}        
-        </a>
-        
-        <hr>
+            {% for post in posts  %}
 
-    {% endfor %}
+            <div class="col-sm-6 col-md-3">
+                
+                <div class="card mb-5">
+                    {% thumbnail post.image "200x200" crop="center" as im %}
+                    <img src="{{ im.url }}" class="card-img-top">
+                    {% endthumbnail %}                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.text }}</h5>
+                        <a href="{% url "feed:detail" post.id %}" class="btn btn-primary">View Full image</a>
+                    </div>
+                </div>
+
+            </div> 
+
+            {%empty%}
+                
+                <div class="col-sm-6 offset-3 text-center py-5 my-5">
+                    <h3>Welcome</h3>
+                    <p>Add your first image?</p>
+                    <a href="{% url "feed:post" %}" class="btn btn-success">
+                        Upload Image
+                    </a>
+                </div>
+
+            {% endfor %}
+
+        </div>
+         
+
 
 {% endblock body %}
     

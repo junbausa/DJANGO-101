@@ -3,12 +3,14 @@
 {% block title %}Upload a new image{% endblock title %}
 
 {% block body %}
-    <form action="" method="post" enctype="multipart/form-data">
+    
+    <form action="" method="post" enctype="multipart/form-data" class="col-sm-4 offset-5 pt-5">
+        <h2>Upload an image</h2>
         {% csrf_token %}
         {% comment %} {{ form }} {% endcomment %}
         {{ form.as_p }}
         <div>
-            <button type="submit">Upload</button>
+            <button type="submit" class="btn btn-success btn-lg">Upload</button>
         </div>  
     </form> 
 
