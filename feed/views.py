@@ -19,7 +19,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         # context["my_thing"] = "Hello world this is from context handler" 
 
-        context["posts"] = Post.objects.all()
+        context["posts"] = Post.objects.all().order_by('-id')
         return context
 
 class PostDetailView(DetailView):
