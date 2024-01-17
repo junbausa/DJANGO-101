@@ -5,6 +5,7 @@ from sorl.thumbnail import ImageField
 class Post(models.Model):
     text = models.CharField(max_length=140, blank=False, null=False)
     image = ImageField()
+    
     # then make a migration
 
     # updating Data name in Database View Django
