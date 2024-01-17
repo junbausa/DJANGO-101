@@ -11,12 +11,18 @@
     {% comment %} We can create for loop to handle posts {% endcomment %}
     {% for post in posts  %}
         
+    {% comment %} Bad Example of adding links {% endcomment %}
+    {% comment %} <a href="/detail/{{ post.id }}">Link to detail</a> {% endcomment %}
+    
+    {% comment %} Good Example of adding links using namespace {% endcomment %}
+    <a href="{% url "feed:detail" post.id %}" style="display: inline-block">
         {{ post.text }}
-
+        <br>
         {% comment %} Adding thumbnails via sorl-thumbnail {% endcomment %}
-        {% thumbnail post.image "100x100" crop="center" as im %}
-        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-        {% endthumbnail %}        
+            {% thumbnail post.image "100x100" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}        
+        </a>
         
         <hr>
 
