@@ -23,3 +23,5 @@ class PostDetailView(DetailView):
     # model = instance of a Post...
     template_name = "detail.html"
     model = Post 
+
+    # you can access the model via object keyword
