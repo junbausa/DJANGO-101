@@ -18,10 +18,19 @@ from django.contrib import admin
 from django.urls import path
 
 # This is added for the feed page
+from django.conf import settings
+from django.conf.urls.static import static
 from django.conf.urls import include
 from feed import urls as feeds_urls
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(feeds_urls, namespace = 'feed'))
 ]
+
+# DEBUG is where it showing extra information when there is a problem
+# In production we will remove this (it is enabled by default)
+if settings.DEBUG:
+# urlpatterns.append()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
