@@ -7,6 +7,10 @@
 {% block title %}Homepage{% endblock title%}
 
 {% block body %}
+
+    <a href="{% url "feed:post" %}" style="display: inline-block">Add a new Post</a>
+    <hr>
+
     {% comment %} <h1>{{ posts }}</h1> {% endcomment %}
     {% comment %} We can create for loop to handle posts {% endcomment %}
     {% for post in posts  %}
@@ -15,6 +19,7 @@
     {% comment %} <a href="/detail/{{ post.id }}">Link to detail</a> {% endcomment %}
     
     {% comment %} Good Example of adding links using namespace {% endcomment %}
+    {% comment %} namespace:nameoftheview {% endcomment %}
     <a href="{% url "feed:detail" post.id %}" style="display: inline-block">
         {{ post.text }}
         <br>
